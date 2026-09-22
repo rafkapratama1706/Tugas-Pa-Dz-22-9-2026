@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Selector universal */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* Selector tag */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* Selector class */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            background-color: #1e3a8a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+             display: flex;
+             align-items: center;
+             gap: 10px;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 32px;
+            object-fit: contain;
+        }
+
+        /* Selector child */
+        .menu > li {
+            display: inline-block;
+            list-style: none;
+            margin-left: 25px;
+        }
+
+        /* Selector descendant */
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* Pseudo-class */
+        .menu a:hover,
+        .menu a.active {
+            color: #facc15;
+        }
+
+        /* Selector ID */
+        #home {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 80px 8%;
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 45px;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* Selector atribut */
+        a[href="#kontak"] {
+            background-color: #f59e0b;
+            padding: 12px 20px;
+            border-radius: 8px;
+        }
+
+        a[href="#kontak"]:hover {
+            background-color: #d97706;
+            color: white;
+        }
+
+        .hero-image {
+            font-size: 140px;
+            display: flex;
+        }
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 35px;
+            font-size: 32px;
+        }
+
+        /* Pseudo-element */
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 4px;
+            margin: 10px auto;
+            background-color: #f59e0b;
+            border-radius: 5px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 2fr);
+            gap: 25px;
+        }
+
+        .cardss {
+            display: grid;
+            grid-template-columns: repeat(3, 2fr);
+            gap: 25px;
+        }
+
+        .tools-cards {
+            display: grid;
+            grid-template-columns: repeat(6, 2fr);
+            gap: 25px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1e3a8a;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #64748b;
+        }
+
+        .about {
+            background-color: white;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 5px rgba(37, 99, 235, 0.4);
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            background-color: #1e3a8a;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #2563eb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #1e3a8a;
+            color: white;
+        }
+
+        /* Tombol menu mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Tampilan tablet dan handphone */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 8%;
+                width: 200px;
+                padding: 15px;
+                background-color: #1e3a8a;
+                border-radius: 8px;
+            }
+
+            .menu.show {
+                display: block;
+            }
+
+            .menu > li {
+                display: block;
+                margin: 15px 0;
+            }
+
+            #home {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 35px;
+            }
+
+            .hero-image {
+                font-size: 90px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav class="navbar">
+        <div class="logo">
+            <img class="logo-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtpY40JbF_ilkAwkRS4fajOl9NXnf9HhZuPov8wevqQ&s=10" alt="Logo SMKN 1 Subang">
+            <span>SMKN 1 Subang</span>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+            ☰
+        </button>
+
+        <ul class="menu" id="menu">
+            <li><a href="#home" class="active">Beranda</a></li>
+            <li><a href="#profesi">Profesi</a></li>
+            <li><a href="#skill">Skill</a></li>
+            <li><a href="#tools">Tools & Teknologi</a></li>
+        </ul>
+    </nav>
+
+    <!-- Bagian Beranda -->
+    <main>
+        <section id="home">
+            <div class="hero-image">
+                <img src ="WhatsApp Image 2026-09-22 at 14.49.58.jpeg" alt="Gambar Hero">
+            </div>
+            <div class="hero-text">
+                <h1>Dekstop Development</h1>
+                <p>
+                    Desktop Development (pengembangan aplikasi desktop) adalah proses merancang, membuat, dan memelihara program perangkat lunak yang berjalan secara lokal pada sistem operasi komputer seperti Windows, macOS, atau Linux.<br>
+                    Aplikasi desktop beroperasi langsung di dalam perangkat keras komputer pengguna tanpa bergantung sepenuhnya pada peramban web (browser).
+                </p>
+
+            </div>
+
+            <div class="hero-image">
+            </div>
+        </section>
+
+        <!-- Bagian Profesi -->
+        <section id="profesi">
+            <h2 class="section-title">Profesi Desktop Development</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">💻</div>
+                    <h3>Bahasa Pemrograman</h3>
+                    <p>
+                        C++, Java, C#, Python buat bikin aplikasi desktop.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🛠️</div>
+                    <h3>Framework & Tools</h3>
+                    <p>
+                        Qt, Electron, .NET, dan Visual Studio buat bikin aplikasi desktop.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🎨</div>
+                    <h3>UI/UX Desktop</h3>
+                    <p>
+                        Ngerancang tampilan aplikasi yang nyaman dipake di layar besar.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <div class="icon">🐞</div>
+                    <h3>Debugging & Testing</h3>
+                    <p>Nyari dan nge-fix bug sebelum aplikasi dirilis.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">💾</div>
+                    <h3>Manajemen Database Lokal</h3>
+                    <p>Kelola data pake SQLite/MySQL langsung di device.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🔒</div>
+                    <h3>Keamanan Aplikasi</h3>
+                    <p>Lindungin data pengguna dari akses yang nggak sah.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">📦</div>
+                    <h3>Packaging & Deployment</h3>
+                    <p>Bikin installer (.exe/.dmg) biar gampang diinstall user.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🚀</div>
+                    <h3>Peluang Karir</h3>
+                    <p>Software Engineer, Application Developer, System Analyst, dll.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Skill -->
+        <section id="skill" class="about">
+            <h2 class="section-title">Skill</h2>
+            <div class="cardss">
+
+           <div class="card">
+               <div class="icon">🧠</div>
+               <h3>Logika Pemrograman</h3>
+               <p>Kemampuan mikir terstruktur buat nyelesain masalah lewat kode.</p>
+           </div>
+
+           <div class="card">
+               <div class="icon">🧩</div>
+               <h3>OOP (Object-Oriented Programming)</h3>
+               <p>Nguasain konsep class, object, inheritance buat bikin aplikasi rapi.</p>
+           </div>
+
+           <div class="card">
+               <div class="icon">🔧</div>
+               <h3>Version Control</h3>
+               <p>Pake Git/GitHub buat kelola dan nyimpen progress kode.</p>
+           </div>
+
+           <div class="card">
+               <div class="icon">🔍</div>
+               <h3>Problem Solving</h3>
+               <p>Cepet nganalisa dan nyari solusi kalau aplikasi error.</p>
+           </div>
+
+           <div class="card">
+               <div class="icon">🖌️</div>
+               <h3>UI Design Basic</h3>
+               <p>Paham dasar desain interface biar aplikasi enak dipake.</p>
+           </div>
+
+           <div class="card">
+               <div class="icon">🤝</div>
+               <h3>Teamwork & Komunikasi</h3>
+               <p>Kerja bareng tim buat bangun aplikasi skala besar.</p>
+           </div>
+        </section>
+
+        <!-- Bagian Tools & Teknologi -->
+        <section id="tools">
+            <h2 class="section-title">Tools & Teknologi</h2>
+            <div class="tools-cards">
+
+            <div class="card">
+    <div class="icon">🖥️</div>
+    <h3>Visual Studio</h3>
+    <p>IDE buat ngoding aplikasi desktop pake C++/C#.</p>
+</div>
+
+<div class="card">
+    <div class="icon">📝</div>
+    <h3>Visual Studio Code</h3>
+    <p>Text editor ringan yang fleksibel buat berbagai bahasa.</p>
+</div>
+
+<div class="card">
+    <div class="icon">🎛️</div>
+    <h3>Qt Creator</h3>
+    <p>IDE khusus buat bikin aplikasi desktop cross-platform.</p>
+</div>
+
+<div class="card">
+    <div class="icon">⚛️</div>
+    <h3>Electron</h3>
+    <p>Framework buat bikin aplikasi desktop pake HTML, CSS, JS.</p>
+</div>
+
+<div class="card">
+    <div class="icon">☕</div>
+    <h3>Java (JDK)</h3>
+    <p>Bahasa & platform buat bikin aplikasi desktop pake JavaFX/Swing.</p>
+</div>
+
+<div class="card">
+    <div class="icon">🐍</div>
+    <h3>Python</h3>
+    <p>Bahasa serbaguna, sering dipake buat aplikasi desktop pake Tkinter/PyQt.</p>
+</div>
+
+<div class="card">
+    <div class="icon">🔧</div>
+    <h3>Git</h3>
+    <p>Version control buat ngelacak perubahan kode.</p>
+</div>
+
+<div class="card">
+    <div class="icon">🐙</div>
+    <h3>GitHub</h3>
+    <p>Platform buat nyimpen dan kolaborasi project lewat Git.</p>
+</div>
+
+<div class="card">
+    <div class="icon">🗄️</div>
+    <h3>MySQL</h3>
+    <p>Database buat nyimpen data aplikasi secara lokal/server.</p>
+</div>
+
+<div class="card">
+    <div class="icon">💽</div>
+    <h3>SQLite</h3>
+    <p>Database ringan yang sering dipake di aplikasi desktop kecil.</p>
+</div>
+
+<div class="card">
+    <div class="icon">🎨</div>
+    <h3>Figma</h3>
+    <p>Tools desain buat rancang tampilan UI sebelum coding.</p>
+</div>
+
+<div class="card">
+    <div class="icon">📦</div>
+    <h3>Inno Setup</h3>
+    <p>Tools buat bikin installer aplikasi desktop (.exe).</p>
+</div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SMKN 1 Subang. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector("#menuToggle");
+        const menu = document.querySelector("#menu");
+
+        menuToggle.addEventListener("click", function () {
+            menu.classList.toggle("show");
+        });
+
+        const menuLinks = document.querySelectorAll(".menu a");
+
+        menuLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                menuLinks.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                link.classList.add("active");
+                menu.classList.remove("show");
+            });
+        });
+    </script>
+
+</body>
+</html>
